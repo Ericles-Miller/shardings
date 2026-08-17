@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('orders')
 export class Order {
@@ -11,6 +11,6 @@ export class Order {
   @Column('numeric', { precision: 10, scale: 2 })
   value: number;
 
-  @Column('date', { name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at', type: 'date' })
   createdAt: string;
 }

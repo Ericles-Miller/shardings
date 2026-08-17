@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
-import { Order } from '../pedidos/pedido.entity';
+import { Order } from '../orders/order.entity';
 import { ShardName } from './shard-name';
 
 export function createShardConnection(

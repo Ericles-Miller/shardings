@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { createShardConnection } from './database/create-shard-connection';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { createShardConnection } from './database/create-shard-connection';
     TypeOrmModule.forRootAsync(
       createShardConnection('db_c', 'DB_C_HOST', 'DB_C_PORT'),
     ),
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
