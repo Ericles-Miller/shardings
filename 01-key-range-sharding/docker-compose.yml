@@ -1,0 +1,44 @@
+services:
+  db_a:
+    image: postgres:16
+    container_name: shard_db_a
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pedidos_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_a_data:/var/lib/postgresql/data
+
+  db_b:
+    image: postgres:16
+    container_name: shard_db_b
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pedidos_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_b_data:/var/lib/postgresql/data
+
+  db_c:
+    image: postgres:16
+    container_name: shard_db_c
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pedidos_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db_c_data:/var/lib/postgresql/data
+
+volumes:
+  db_a_data:
+  db_b_data:
+  db_c_data:
